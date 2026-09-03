@@ -1,1 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="BMS Customer Management"
+  >
+
+  <title>BMS — Customers</title>
+
+  <!-- IMPORTANT: customers.html is inside /pages -->
+  <link
+    rel="stylesheet"
+    href="../css/style.css?v=20260902-01"
+  >
+
+</head>
+
+
+<body>
+
+  <!-- SIDEBAR OVERLAY -->
+
+  <div
+    id="sidebarOverlay"
+    class="sidebar-overlay"
+  ></div>
+
+
+  <!-- SIDEBAR -->
+
+  <aside
+    id="sidebar"
+    class="sidebar"
+  >
+
+    <div class="brand">
+
+      <div class="brand-logo">
+        B
+      </div>
+
+      <div>
+
+        <h1>BMS</h1>
+
+        <span>
+          Business Management
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <nav class="navigation">
+
+      <p class="nav-label">
+        MAIN
+      </p>
+
+
+      <a
+        href="../dashboard.html"
+        class="nav-link"
+      >
+        Dashboard
+      </a>
+
+
+      <a
+        href="customers.html"
+        class="nav-link active"
+      >
+        Customers
+      </a>
+
+
+      <a
+        href="products.html"
+        class="nav-link"
+      >
+        Products
+      </a>
+
+
+      <a
+        href="services.html"
+        class="nav-link"
+      >
+        Services
+      </a>
+
+
+      <a
+        href="sales.html"
+        class="nav-link"
+      >
+        Sales
+      </a>
+
+
+      <p class="nav-label">
+        MANAGEMENT
+      </p>
+
+
+      <a
+        href="expenses.html"
+        class="nav-link"
+      >
+        Expenses
+      </a>
+
+
+      <a
+        href="reports.html"
+        class="nav-link"
+      >
+        Reports
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <button
+        id="logoutBtn"
+        class="logout-button"
+        type="button"
+      >
+        Logout
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- MAIN -->
+
+  <div class="main-wrapper">
+
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+      <button
+        id="menuBtn"
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+      >
+        ☰
+      </button>
+
+
+      <div class="topbar-title">
+
+        <h2>
+          Customers
+        </h2>
+
+        <p id="currentDate">
+          Loading date...
+        </p>
+
+      </div>
+
+
+      <div class="user-area">
+
+  <button
+    id="profileButton"
+    class="user-avatar"
+    type="button"
+    aria-label="Open account menu"
+    aria-expanded="false"
+  >
+    <span id="userInitial">?</span>
+  </button>
+
+
+  <div
+    id="profileMenu"
+    class="profile-menu"
+    hidden
+  >
+
+    <div class="profile-menu-header">
+
+      <div class="profile-menu-avatar">
+        <span id="profileInitial">?</span>
+      </div>
+
+      <div class="profile-menu-identity">
+
+        <strong id="profileName">
+          Loading...
+        </strong>
+
+        <span id="profileEmail">
+          Loading...
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="profile-menu-details">
+
+      <div class="profile-detail">
+        <span>Role</span>
+        <strong id="profileRole">—</strong>
+      </div>
+
+      <div class="profile-detail">
+        <span>Business</span>
+        <strong id="profileBusiness">—</strong>
+      </div>
+
+      <div class="profile-detail">
+        <span>Currency</span>
+        <strong id="profileCurrency">—</strong>
+      </div>
+
+    </div>
+
+
+    <div class="profile-menu-links">
+
+      <button
+        type="button"
+        class="profile-menu-item"
+        disabled
+      >
+        <span>Profile</span>
+        <small>Coming soon</small>
+      </button>
+
+
+      <button
+        type="button"
+        class="profile-menu-item"
+        disabled
+      >
+        <span>Business Profile</span>
+        <small>Coming soon</small>
+      </button>
+
+
+      <button
+        type="button"
+        class="profile-menu-item"
+        disabled
+      >
+        <span>Settings</span>
+        <small>Coming soon</small>
+      </button>
+
+
+      <button
+        type="button"
+        class="profile-menu-item"
+        disabled
+      >
+        <span>Security</span>
+        <small>Coming soon</small>
+      </button>
+
+    </div>
+
+
+    <div class="profile-menu-footer">
+
+      <button
+        id="profileLogoutBtn"
+        class="profile-logout"
+        type="button"
+      >
+        Logout
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+    </header>
+
+
+    <!-- CONTENT -->
+
+    <main class="dashboard-content">
+
+
+      <!-- PAGE HEADER -->
+
+      <section class="page-heading">
+
+        <div>
+
+          <p class="eyebrow page-eyebrow">
+            CUSTOMER MANAGEMENT
+          </p>
+
+          <h1>
+            Customers
+          </h1>
+
+          <p>
+            Manage your business customer records.
+          </p>
+
+        </div>
+
+
+        <button
+          id="openCustomerFormBtn"
+          class="primary-button"
+          type="button"
+        >
+          + Add Customer
+        </button>
+
+      </section>
+
+
+      <!-- MESSAGE -->
+
+      <div
+        id="customerMessage"
+        class="dashboard-message"
+        role="alert"
+      ></div>
+
+
+      <!-- CUSTOMER FORM -->
+
+      <section
+        id="customerFormPanel"
+        class="panel customer-form-panel"
+        hidden
+      >
+
+        <div class="panel-header">
+
+          <div>
+
+            <h2 id="formTitle">
+              Add Customer
+            </h2>
+
+            <p>
+              Enter the customer's information below.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <form
+          id="customerForm"
+          class="customer-form"
+          novalidate
+        >
+
+          <input
+            type="hidden"
+            id="editingCustomerId"
+          >
+
+
+          <div class="customer-form-grid">
+
+
+            <div class="form-group">
+
+              <label for="customerName">
+                Customer Name *
+              </label>
+
+              <input
+                id="customerName"
+                name="name"
+                type="text"
+                placeholder="e.g. Abdul Karim"
+                autocomplete="name"
+                required
+                maxlength="100"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="customerPhone">
+                Phone *
+              </label>
+
+              <input
+                id="customerPhone"
+                name="phone"
+                type="tel"
+                placeholder="e.g. 0241234567"
+                autocomplete="tel"
+                required
+                maxlength="30"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="customerEmail">
+                Email
+              </label>
+
+              <input
+                id="customerEmail"
+                name="email"
+                type="email"
+                placeholder="customer@example.com"
+                autocomplete="email"
+                maxlength="150"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="customerAddress">
+                Address
+              </label>
+
+              <input
+                id="customerAddress"
+                name="address"
+                type="text"
+                placeholder="Customer address"
+                autocomplete="street-address"
+                maxlength="200"
+              >
+
+            </div>
+
+
+            <div class="form-group form-group-full">
+
+              <label for="customerNotes">
+                Notes
+              </label>
+
+              <textarea
+                id="customerNotes"
+                name="notes"
+                placeholder="Additional information..."
+                maxlength="500"
+                rows="4"
+              ></textarea>
+
+            </div>
+
+          </div>
+
+
+          <div class="form-actions">
+
+            <button
+              id="cancelCustomerBtn"
+              class="secondary-button"
+              type="button"
+            >
+              Cancel
+            </button>
+
+
+            <button
+              id="saveCustomerBtn"
+              class="primary-button"
+              type="submit"
+            >
+              Save Customer
+            </button>
+
+          </div>
+
+        </form>
+
+      </section>
+
+
+      <!-- CUSTOMER LIST -->
+
+      <section class="panel customer-list-panel">
+
+        <div class="panel-header customer-list-header">
+
+          <div>
+
+            <h2>
+              Customer Records
+            </h2>
+
+            <p>
+              <span id="customerTotal">
+                0
+              </span>
+              customer(s)
+            </p>
+
+          </div>
+
+
+          <div class="customer-search">
+
+            <label
+              for="customerSearch"
+              class="sr-only"
+            >
+              Search customers
+            </label>
+
+            <input
+              id="customerSearch"
+              type="search"
+              placeholder="Search customers..."
+              autocomplete="off"
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- LOADING -->
+
+        <div
+          id="customerLoading"
+          class="customer-state"
+        >
+
+          <strong>
+            Loading customers...
+          </strong>
+
+          <p>
+            Please wait.
+          </p>
+
+        </div>
+
+
+        <!-- EMPTY -->
+
+        <div
+          id="customerEmpty"
+          class="customer-state"
+          hidden
+        >
+
+          <strong>
+            No customers yet
+          </strong>
+
+          <p>
+            Add your first customer to begin.
+          </p>
+
+          <button
+            id="emptyAddCustomerBtn"
+            class="primary-button"
+            type="button"
+          >
+            + Add Customer
+          </button>
+
+        </div>
+
+
+        <!-- NO SEARCH RESULTS -->
+
+        <div
+          id="customerNoResults"
+          class="customer-state"
+          hidden
+        >
+
+          <strong>
+            No matching customers
+          </strong>
+
+          <p>
+            Try another search term.
+          </p>
+
+        </div>
+
+
+        <!-- TABLE -->
+
+        <div
+          id="customerTableWrapper"
+          class="customer-table-wrapper"
+          hidden
+        >
+
+          <table class="customer-table">
+
+            <thead>
+
+              <tr>
+
+                <th>Name</th>
+
+                <th>Phone</th>
+
+                <th>Email</th>
+
+                <th>Address</th>
+
+                <th>Actions</th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody
+              id="customerTableBody"
+            ></tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+      <p>
+        BMS
+        <span id="footerYear"></span>
+        — Business Management System
+      </p>
+
+    </footer>
+
+  </div>
+
+
+  <!-- CUSTOMERS JAVASCRIPT -->
+
+  <script
+  type="module"
+  src="/js/customers.js?v=20260902-01"
+></script>
+
+</body>
+
+</html>
