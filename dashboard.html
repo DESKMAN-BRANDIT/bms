@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Business Management System Dashboard"
+  >
+
+  <meta
+    name="theme-color"
+    content="#6d28d9"
+  >
+
+  <title>BMS — Dashboard</title>
+
+  <link
+    rel="stylesheet"
+    href="css/style.css?v=1"
+  >
+
+</head>
+
+
+<body>
+
+  <!-- ======================================
+       MOBILE SIDEBAR OVERLAY
+  ======================================= -->
+
+  <div
+    id="sidebarOverlay"
+    class="sidebar-overlay"
+  ></div>
+
+
+  <!-- ======================================
+       SIDEBAR
+  ======================================= -->
+
+  <aside
+    id="sidebar"
+    class="sidebar"
+    aria-label="Main navigation"
+  >
+
+    <div class="brand">
+
+      <div class="brand-logo">
+        B
+      </div>
+
+      <div>
+
+        <h1>BMS</h1>
+
+        <span>
+          Business Management
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <nav class="navigation">
+
+      <p class="nav-label">
+        MAIN
+      </p>
+
+
+      <a
+        href="dashboard.html"
+        class="nav-link active"
+        aria-current="page"
+      >
+        <span>Dashboard</span>
+      </a>
+
+
+      <a
+        href="pages/customers.html"
+        class="nav-link"
+      >
+        <span>Customers</span>
+      </a>
+
+
+      <a
+        href="pages/products.html"
+        class="nav-link"
+      >
+        <span>Products</span>
+      </a>
+
+
+      <a
+        href="pages/services.html"
+        class="nav-link"
+      >
+        <span>Services</span>
+      </a>
+
+
+      <a
+        href="pages/sales.html"
+        class="nav-link"
+      >
+        <span>Sales</span>
+      </a>
+
+
+      <p class="nav-label">
+        MANAGEMENT
+      </p>
+
+
+      <a
+        href="pages/expenses.html"
+        class="nav-link"
+      >
+        <span>Expenses</span>
+      </a>
+
+
+      <a
+        href="pages/reports.html"
+        class="nav-link"
+      >
+        <span>Reports</span>
+      </a>
+
+    </nav>
+
+
+    <!--
+      Logout is now handled from the
+      account/profile menu.
+    -->
+
+  </aside>
+
+
+  <!-- ======================================
+       MAIN WRAPPER
+  ======================================= -->
+
+  <div class="main-wrapper">
+
+
+    <!-- ======================================
+         TOPBAR
+    ======================================= -->
+
+    <header class="topbar">
+
+
+      <button
+        id="menuBtn"
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-controls="sidebar"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+
+      <div class="topbar-title">
+
+        <h2>
+          Dashboard
+        </h2>
+
+        <p id="currentDate">
+          Loading date...
+        </p>
+
+      </div>
+
+
+      <!-- ====================================
+           USER PROFILE
+      ===================================== -->
+
+      <div class="user-area">
+
+  <button
+    id="profileButton"
+    class="user-avatar"
+    type="button"
+    aria-label="Open account menu"
+    aria-expanded="false"
+  >
+    <span id="userInitial">?</span>
+  </button>
+
+
+  <!-- ACCOUNT POPUP -->
+
+  <div
+  id="profileMenu"
+  class="profile-menu"
+  hidden
+  aria-hidden="true"
+>
+
+    <div class="profile-menu-header">
+
+      <div class="profile-menu-avatar">
+        <span id="profileInitial">?</span>
+      </div>
+
+      <div class="profile-menu-identity">
+
+        <strong id="profileName">
+          Loading...
+        </strong>
+
+        <span id="profileEmail">
+          Loading...
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="profile-menu-details">
+
+      <div class="profile-detail">
+        <span>Role</span>
+        <strong id="profileRole">—</strong>
+      </div>
+
+      <div class="profile-detail">
+        <span>Business</span>
+        <strong id="profileBusiness">—</strong>
+      </div>
+
+      <div class="profile-detail">
+        <span>Currency</span>
+        <strong id="profileCurrency">—</strong>
+      </div>
+
+    </div>
+
+
+    <div class="profile-menu-links">
+
+      <button
+        type="button"
+        class="profile-menu-item"
+        disabled
+      >
+        <span>Profile</span>
+        <small>Coming soon</small>
+      </button>
+
+
+      <button
+        type="button"
+        class="profile-menu-item"
+        disabled
+      >
+        <span>Business Profile</span>
+        <small>Coming soon</small>
+      </button>
+
+
+      <button
+        type="button"
+        class="profile-menu-item"
+        disabled
+      >
+        <span>Settings</span>
+        <small>Coming soon</small>
+      </button>
+
+
+      <button
+        type="button"
+        class="profile-menu-item"
+        disabled
+      >
+        <span>Security</span>
+        <small>Coming soon</small>
+      </button>
+
+    </div>
+
+
+    <div class="profile-menu-footer">
+
+      <button
+        id="profileLogoutBtn"
+        class="profile-logout"
+        type="button"
+      >
+        Logout
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+    </header>
+
+
+    <!-- ======================================
+         DASHBOARD CONTENT
+    ======================================= -->
+
+    <main class="dashboard-content">
+
+
+      <!-- WELCOME -->
+
+      <section class="welcome-section">
+
+        <div>
+
+          <p class="eyebrow">
+            BUSINESS OVERVIEW
+          </p>
+
+          <h1>
+
+            Welcome back,
+            <span id="welcomeName">
+              Owner
+            </span>
+
+          </h1>
+
+          <p id="businessName">
+            Loading business...
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- STATUS MESSAGE -->
+
+      <div
+        id="dashboardMessage"
+        class="dashboard-message"
+        role="status"
+        aria-live="polite"
+      ></div>
+
+
+      <!-- ====================================
+           STATISTICS
+      ===================================== -->
+
+      <section
+        class="stats-grid"
+        aria-label="Business statistics"
+      >
+
+
+        <article class="stat-card">
+
+          <div class="stat-header">
+
+            <span>
+              Customers
+            </span>
+
+            <span class="stat-icon">
+              C
+            </span>
+
+          </div>
+
+          <strong id="customerCount">
+            0
+          </strong>
+
+          <p>
+            Total customers
+          </p>
+
+        </article>
+
+
+        <article class="stat-card">
+
+          <div class="stat-header">
+
+            <span>
+              Products
+            </span>
+
+            <span class="stat-icon">
+              P
+            </span>
+
+          </div>
+
+          <strong id="productCount">
+            0
+          </strong>
+
+          <p>
+            Active products
+          </p>
+
+        </article>
+
+
+        <article class="stat-card">
+
+          <div class="stat-header">
+
+            <span>
+              Services
+            </span>
+
+            <span class="stat-icon">
+              S
+            </span>
+
+          </div>
+
+          <strong id="serviceCount">
+            0
+          </strong>
+
+          <p>
+            Available services
+          </p>
+
+        </article>
+
+
+        <article class="stat-card">
+
+          <div class="stat-header">
+
+            <span>
+              Sales
+            </span>
+
+            <span class="stat-icon">
+              T
+            </span>
+
+          </div>
+
+          <strong id="salesCount">
+            0
+          </strong>
+
+          <p>
+            Recorded transactions
+          </p>
+
+        </article>
+
+
+        <article class="stat-card">
+
+          <div class="stat-header">
+
+            <span>
+              Expenses
+            </span>
+
+            <span class="stat-icon">
+              E
+            </span>
+
+          </div>
+
+          <strong id="expenseCount">
+            0
+          </strong>
+
+          <p>
+            Recorded expenses
+          </p>
+
+        </article>
+
+
+        <article class="stat-card revenue-card">
+
+          <div class="stat-header">
+
+            <span>
+              Revenue
+            </span>
+
+            <span class="stat-icon">
+              R
+            </span>
+
+          </div>
+
+          <strong id="revenueTotal">
+            GHS 0.00
+          </strong>
+
+          <p>
+            Recorded sales value
+          </p>
+
+        </article>
+
+
+      </section>
+
+
+      <!-- ====================================
+           LOWER CONTENT
+      ===================================== -->
+
+      <section class="dashboard-lower">
+
+
+        <!-- QUICK ACTIONS -->
+
+        <article class="panel">
+
+          <div class="panel-header">
+
+            <div>
+
+              <h2>
+                Quick Actions
+              </h2>
+
+              <p>
+                Common business operations
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="quick-actions">
+
+
+            <a
+              href="pages/customers.html"
+              class="quick-action"
+            >
+
+              <strong>
+                Add Customer
+              </strong>
+
+              <span>
+                Create a customer record
+              </span>
+
+            </a>
+
+
+            <a
+              href="pages/products.html"
+              class="quick-action"
+            >
+
+              <strong>
+                Add Product
+              </strong>
+
+              <span>
+                Add inventory item
+              </span>
+
+            </a>
+
+
+            <a
+              href="pages/services.html"
+              class="quick-action"
+            >
+
+              <strong>
+                Add Service
+              </strong>
+
+              <span>
+                Create a service
+              </span>
+
+            </a>
+
+
+            <a
+              href="pages/sales.html"
+              class="quick-action"
+            >
+
+              <strong>
+                Record Sale
+              </strong>
+
+              <span>
+                Create a transaction
+              </span>
+
+            </a>
+
+
+          </div>
+
+        </article>
+
+
+      </section>
+
+
+      <!-- ====================================
+           RECENT ACTIVITY
+      ===================================== -->
+
+      <section
+        class="panel activity-panel"
+      >
+
+        <div class="panel-header">
+
+          <div>
+
+            <h2>
+              Recent Activity
+            </h2>
+
+            <p>
+              Business activity will appear here
+              as modules are implemented.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="empty-state">
+
+          <strong>
+            No activity yet
+          </strong>
+
+          <p>
+            Start by adding a customer,
+            product, service or sale.
+          </p>
+
+        </div>
+
+      </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+      <p>
+
+        BMS
+
+        <span id="footerYear"></span>
+
+        — Business Management System
+
+      </p>
+
+    </footer>
+
+
+  </div>
+
+
+  <!-- ======================================
+       JAVASCRIPT
+  ======================================= -->
+
+  <script
+    type="module"
+    src="js/dashboard.js?v=1"
+  ></script>
+
+
+</body>
+
+</html>
+
